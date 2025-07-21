@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+package proto;
+
+message GetPlayerPersonalShow {
+  repeated PlayerInfo players = 1;
+  repeated ClanInfo clans = 2;
+  repeated TitleInfo titles = 6;
+  PlayerInfo detailed_player = 7;
+  SocialInfo social = 8;
+  ProfileCustomization profile = 9;
+  Settings settings = 10;
+  SessionData session = 11;
+  repeated Unlock unlocks = 13;
+  repeated CurrencyBalance currencies = 14;
+}
+
+message PlayerInfo {
+  int64 user_id = 1;
+  int32 account_status = 2;
+  string username = 3;
+  string country_code = 5;
+  int32 level = 6;
+  int32 experience = 7;
+  int64 clan_id = 11;
+  int64 title_id = 12;
+  int32 matches_played = 14;
+  int32 kills = 15;
+  int32 daily_challenges = 18;
+  int32 current_avatar = 19;
+  int32 main_weapon = 20;
+  int32 cosmetic_skin = 21;
+  int64 last_login = 24;
+  int32 rank = 30;
+  int32 skill_rating = 31;
+  bytes encrypted_stats = 32;
+  int32 headshot_percentage = 35;
+  int32 current_rank = 36;
+  string clan_tag = 41;
+  int64 join_date = 44;
+  SubscriptionInfo subscription = 49;
+  string game_version = 50;
+  bool email_verified = 52;
+  bool phone_verified = 53;
+  repeated Achievement achievements = 61;
+  EquippedItems equipped = 63;
+  RegionInfo region = 64;
+}
+
+message ClanInfo {
+  int32 clan_id = 1;
+  int32 member_count = 3;
+  bytes clan_logo = 4;
+  repeated ClanRank ranks = 5;
+  int32 status = 6;
+  int32 permission_level = 8;
+  int64 creation_date = 11;
+}
+
+message ClanRank {
+  oneof rank_type {
+    int32 custom_rank = 2;
+    int32 standard_rank = 1;
+  }
+}
+
+message TitleInfo {
+  int32 title_id = 1;
+  string title_name = 2;
+  int32 unlock_requirement = 3;
+  int32 rarity = 4;
+  int32 usage_count = 5;
+  int32 category = 6;
+}
+
+message SocialInfo {
+  int32 friends_count = 1;
+  int32 friend_requests = 3;
+  int32 max_friends = 4;
+  int32 blocked_count = 5;
+  int32 favorite_friend = 6;
+  int32 preferred_region = 9;
+}
+
+message ProfileCustomization {
+  int64 user_id = 1;
+  int32 banner = 3;
+  string bio = 9;
+  int32 layout_style = 10;
+  string custom_url = 14;
+}
+
+message Settings {
+  int32 sensitivity = 1;
+}
+
+message SessionData {
+  int32 current_streak = 1;
+  int64 session_start = 8;
+  int64 session_end = 9;
+  int32 match_count = 10;
+}
+
+message Unlock {
+  int32 item_id = 1;
+  int32 unlock_type = 2;
+}
+
+message CurrencyBalance {
+  int32 currency_type = 1;
+  int32 amount = 2;
+  int32 max_capacity = 3;
+  int32 bonus = 4;
+}
+
+message SubscriptionInfo {
+  int32 tier = 2;
+  int32 renewal_period = 3;
+}
+
+message Achievement {
+  int32 achievement_id = 1;
+  int32 progress = 2;
+  AchievementDetails details = 3;
+}
+
+message AchievementDetails {
+  int32 objective_type = 1;
+  int32 target_value = 2;
+  int32 current_value = 3;
+  int32 reward_type = 4;
+  int32 reward_amount = 5;
+}
+
+message EquippedItems {
+  repeated EquippedSlot slots = 1;
+}
+
+message EquippedSlot {
+  int32 slot_type = 1;
+  int64 item_id = 2;
+  int32 variant = 3;
+}
+
+message RegionInfo {
+  int32 region_id = 1;
+  int32 ping = 2;
+}
