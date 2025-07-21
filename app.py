@@ -39,7 +39,7 @@ def encrypt_aes(hex_data, key, iv):
 def get_credentials(region):
     region = region.upper()
     if region == "ME":
-        return "3814195836", "46045DFB48795D9EB2A231F4A40BC8832C5724117550E3C23A042625F3D83DBF"
+        return "4032277356", "98C21A7181240741DB8B4744141EB2DE0820D5DE88ACCAFD9767A4D39E3B435C"
     elif region in ["ME", "BR", "SAC", "US"]:
         return "uid", "password"
     else:
